@@ -1,7 +1,6 @@
 const { urlencoded } = require("express");
 const express = require("express");
 const validUrl = require("valid-url");
-require("dotenv").config();
 const conn2DB = require("./config/db");
 const shortenedUrl = require("./models/shortenedUrl");
 
