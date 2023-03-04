@@ -32,24 +32,36 @@
               class="form-control m-2"
               placeholder="Url"
             />
-            <button type="button" class="btn btn-success btn-md col-6 m-2">Shorten</button>
+            <button type="submit" class="btn btn-success btn-md col-6 m-2">
+              Shorten
+            </button>
           </div>
         </div>
       </form>
       <div class="container text-center d-flex flex-column p-3">
-          <div class="row row-cols-6  justify-content-between border border-primary">
-            <div class="col">Long URL</div>
-            <div class="col">Short URL</div>
-            <div class="col">Clicks</div>
-            <div class="col">Expiry</div>
-          </div>
+        <div
+          class="row row-cols-6 justify-content-between border border-primary"
+        >
+          <div class="col">Long URL</div>
+          <div class="col">Short URL</div>
+          <div class="col">Clicks</div>
+          <div class="col">Expiry</div>
+        </div>
         <% urls.forEach(url => { %>
-          <div class="row row-cols-6 justify-content-between p-2 border border-primary">
-            <div class="col text-break"><%= url.long %></div>
-            <div class="col text-break"><a href="<%= process.env.BASE_URL+'/'+url.short %>"><%= process.env.BASE_URL+'/'+url.short %></a></div>
-            <div class="col"><%= url.clicks %></div>
-            <div class="col"><%= url.expireAt.toString().split(' ').slice(1,4).join(' ') %></div>
+        <div
+          class="row row-cols-6 justify-content-between p-2 border border-primary"
+        >
+          <div class="col text-break"><%= url.long %></div>
+          <div class="col text-break">
+            <a href="<%= process.env.BASE_URL+'/'+url.short %>"
+              ><%= process.env.BASE_URL+'/'+url.short %></a
+            >
           </div>
+          <div class="col"><%= url.clicks %></div>
+          <div class="col">
+            <%= url.expireAt.toString().split(' ').slice(1,4).join(' ') %>
+          </div>
+        </div>
         <% }); %>
       </div>
     </div>
