@@ -1,5 +1,6 @@
 const { urlencoded } = require("express");
 const express = require("express");
+const { nanoid } = require("nanoid");
 const validUrl = require("valid-url");
 require("dotenv").config();
 const conn2DB = require("./config/db");
@@ -22,7 +23,7 @@ app.post("/urlshorten", async (req, res) => {
   if (!validUrl.isUri(req.body.urlLong)) {
     res.status(401).send("Invalid URL");
   } else {
-    await shortenedUrl.create({ long: req.body.urlLong });
+    await shortenedUrl.create({ long: req.body.urlLong, short: nanoid(9) });
     res.redirect("/");
   }
 });
